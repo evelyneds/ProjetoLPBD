@@ -1,0 +1,4 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Thu Oct 16 20:27:43 BRT 2014
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact com.google.gwt\:gwt-dev\:jar\:2.6.0 from/to central (http\://repo.maven.apache.org/maven2)\: The target server failed to respond
+8228e3f9227e0305a3222071646bbaca1c36db3c@wsg1.telefonica.com.br\:80>default-http\://repo.maven.apache.org/maven2/.lastUpdated=1413502063738

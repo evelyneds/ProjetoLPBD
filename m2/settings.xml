@@ -1,0 +1,12 @@
+<settings>
+  <proxies>
+   <proxy>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>wsg1.telefonica.com.br</host>
+      <port>80</port>
+      <username>fatec146a@centropaulasouza.sp.gov.br</username>
+      <password>vwgo1f</password>
+    </proxy>
+  </proxies>
+</settings>
