@@ -31,6 +31,49 @@ public class Company implements Serializable{
     @OneToMany(mappedBy="owner",orphanRemoval=true,fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
     private List<Vaga> vagas;
+
+    public Company() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCnpj() {
+        return Cnpj;
+    }
+
+    public void setCnpj(String Cnpj) {
+        this.Cnpj = Cnpj;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Vaga> getVagas() {
+        return vagas;
+    }
+
+    public void setVagas(List<Vaga> vagas) {
+        this.vagas = vagas;
+    }
     
     
     

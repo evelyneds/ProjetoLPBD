@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.fatec.lpbd.projetocurriculo.model.Company.Vaga;
 
 /**
  *
@@ -61,6 +62,74 @@ cascade={CascadeType.ALL})
     @ManyToMany(mappedBy = "employees",fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
     private List<Perfil> perfis;
+    
+    @ManyToMany(mappedBy="employees",fetch=FetchType.LAZY, 
+cascade={CascadeType.ALL})
+    private List<Vaga> vagas;
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Email> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
+    }
+
+    public List<AcademicHistory> getAcademics() {
+        return academics;
+    }
+
+    public void setAcademics(List<AcademicHistory> academics) {
+        this.academics = academics;
+    }
+
+    public List<Experience> getExperiences() {
+        return experiences;
+    }
+
+    public void setExperiences(List<Experience> experiences) {
+        this.experiences = experiences;
+    }
+
+    public List<Language> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
+    }
+
+    public List<Perfil> getPerfis() {
+        return perfis;
+    }
+
+    public void setPerfis(List<Perfil> perfis) {
+        this.perfis = perfis;
+    }
+
+    public List<Vaga> getVagas() {
+        return vagas;
+    }
+
+    public void setVagas(List<Vaga> vagas) {
+        this.vagas = vagas;
+    }
 
      public Employee() {
     }

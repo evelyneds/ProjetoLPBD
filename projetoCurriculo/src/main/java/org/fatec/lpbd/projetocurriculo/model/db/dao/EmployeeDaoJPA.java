@@ -6,10 +6,12 @@
 
 package org.fatec.lpbd.projetocurriculo.model.db.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Address;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
@@ -21,7 +23,7 @@ import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
 public class EmployeeDaoJPA implements EmployeeDao {
     private EntityManagerFactory factory;
     
-    private String jpql = "SELECT o FROM User o";
+    private String jpql = "SELECT o FROM Employee o";
     private String searchUser = "SELECT u FROM USER u WHERE u.id = ?";
     private String searchLogin = "SELECT u FROM USER u WHERE u.login = ?";
     private String searchItem = "SELECT u FROM USER u where name like ? order by name";
@@ -46,6 +48,40 @@ public class EmployeeDaoJPA implements EmployeeDao {
             em.close();
         }
         return true;
+    }
+        
+    
+    public List<Employee> list() {
+        List<Employee> list = new ArrayList<Employee>();
+        EntityManager em = factory.createEntityManager();
+        if (em != null) {
+            try {
+                TypedQuery<Employee> query = em.createQuery(jpql, Employee.class);
+                list = query.getResultList();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                em.close();
+            }
+        }
+        return list;
+    }
+    
+    public int remove(long id) {
+        int removed = -1;
+        EntityManager em = factory.createEntityManager();
+        try{
+            em.getTransaction().begin();
+            Employee employee= em.find(Employee.class, id);
+            em.remove(employee);
+            em.getTransaction().commit();
+        }catch(Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }finally {
+            em.close();
+        }
+        return removed;
     }
     
 }

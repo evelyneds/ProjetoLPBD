@@ -17,4 +17,9 @@ import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
  */
 public interface EmployeeDao {
     boolean persist(Employee employee);
+    
+    List<Employee> list();
+    
+    int remove(long id);
 }
+

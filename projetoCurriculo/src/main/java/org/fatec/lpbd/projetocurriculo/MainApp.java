@@ -7,6 +7,7 @@
 package org.fatec.lpbd.projetocurriculo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Address;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
@@ -28,25 +29,38 @@ public class MainApp {
     //emp.setId(idd);
     
     
-    emp.setName("Carlos");
-    emp.setLastName("Leonardo");
-    emp.setCpf("1299999999");
-    emp.setRg("1234588");
-    emp.setPassword("12345");
-    ad.setStreet("Rua tres");
+    emp.setName("CarlosSlll");
+    emp.setLastName("Leonardoaaaa");
+    emp.setCpf("1299999999aa");
+    emp.setRg("1234588sss");
+    emp.setPassword("12345sss");
+    
+    ad.setStreet("Rua tressss");
     ad.setOwner(emp);
+    emp.setAddress(ad);
+    
     Phone phone = new Phone();
-    phone.setNumber("3333333333");    
+    phone.setNumber("3333333");    
     phone.setOwner(emp);
     phones.add(phone);
     Phone phone1 = new Phone();
     phone1.setNumber("222222222");    
     phone1.setOwner(emp);
     phones.add(phone1);
+    emp.setPhones(phones);
     
 //        user.setPassword("12345");
         EmployeeDao dao = new EmployeeDaoJPA();
         boolean i = dao.persist(emp);
+        
+        List<Employee> all = new ArrayList<Employee>();
+        all = dao.list();
+        for (Employee employee : all){
+            System.out.println("Nome"+employee.getName()+"Rua"+employee.getAddress().getStreet());
+            
+        }
+        //dao.remove(2L);
     }
     
 }
+
