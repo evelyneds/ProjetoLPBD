@@ -24,6 +24,8 @@ public interface CompanyDao {
     List<VacantJob> listVacant(long id);
     
     int remove(long id);
+    
+    Company findByLogin(String cnpj);
 
     
 }

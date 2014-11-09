@@ -88,4 +88,19 @@ public class CompanyDaoJPA {
         return removed;
     }
     
+    public Company findByLogin(String cnpj) {
+        EntityManager em = factory.createEntityManager();
+        Company company = new Company();
+        try{
+            TypedQuery<Company> query = em.createQuery(searchLogin, Company.class);
+            query.setParameter(1, cnpj);
+            company = query.getSingleResult();
+        }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }    
+        return company;
+    }
+    
 }

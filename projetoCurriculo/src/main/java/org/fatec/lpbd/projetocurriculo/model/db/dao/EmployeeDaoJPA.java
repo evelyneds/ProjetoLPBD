@@ -24,9 +24,9 @@ public class EmployeeDaoJPA implements EmployeeDao {
     private EntityManagerFactory factory;
     
     private String jpql = "SELECT o FROM Employee o";
-    private String searchUser = "SELECT u FROM USER u WHERE u.id = ?";
-    private String searchLogin = "SELECT u FROM USER u WHERE u.login = ?";
-    private String searchItem = "SELECT u FROM USER u where name like ? order by name";
+    private String searchUser = "SELECT u FROM Employee u WHERE u.id = ?";
+    private String searchLogin = "SELECT u FROM Employee u WHERE u.cpf = ?";
+    private String searchItem = "SELECT u FROM Employee u where name like ? order by name";
 
     public EmployeeDaoJPA() {
         factory = Persistence.createEntityManagerFactory("projeto");
@@ -102,6 +102,21 @@ public class EmployeeDaoJPA implements EmployeeDao {
             em.close();
         }
         return updated;
+    }
+    
+    public Employee findByLogin(String cpf) {
+        EntityManager em = factory.createEntityManager();
+        Employee employee = new Employee();
+        try{
+            TypedQuery<Employee> query = em.createQuery(searchLogin, Employee.class);
+            query.setParameter(1, cpf);
+            employee = query.getSingleResult();
+        }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }    
+        return employee;
     }
     
 }

@@ -33,8 +33,8 @@ public class Employee implements Serializable {
     private String lastName;
     private int age;
     private String password;   
-    private String Cpf;
-    private String Rg;
+    private String cpf;
+    private String rg;
     
     @OneToMany(mappedBy="owner",orphanRemoval=true,fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
@@ -176,19 +176,19 @@ cascade={CascadeType.ALL})
     }
 
     public String getCpf() {
-        return Cpf;
+        return cpf;
     }
 
-    public void setCpf(String Cpf) {
-        this.Cpf = Cpf;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getRg() {
-        return Rg;
+        return rg;
     }
 
-    public void setRg(String Rg) {
-        this.Rg = Rg;
+    public void setRg(String rg) {
+        this.rg = rg;
     }
     
     

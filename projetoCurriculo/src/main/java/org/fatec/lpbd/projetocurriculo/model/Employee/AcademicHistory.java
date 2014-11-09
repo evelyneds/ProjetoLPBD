@@ -25,7 +25,7 @@ public class AcademicHistory implements Serializable {
 private long id;
 private String course;
 private String institution;
-private String Status;
+private String status;
 @Temporal(javax.persistence.TemporalType.DATE)
 private Date starDate;
 @Temporal(javax.persistence.TemporalType.DATE)
@@ -61,11 +61,11 @@ private Employee owner;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
-    public void setStatus(String Status) {
-        this.Status = Status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Date getStarDate() {

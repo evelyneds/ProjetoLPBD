@@ -26,7 +26,7 @@ public class Company implements Serializable{
     @Id @GeneratedValue   
     private Long id;
     private String companyName;
-    private String Cnpj;
+    private String cnpj;
     private String password;
     @OneToMany(mappedBy="owner",orphanRemoval=true,fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
@@ -52,11 +52,11 @@ cascade={CascadeType.ALL})
     }
 
     public String getCnpj() {
-        return Cnpj;
+        return cnpj;
     }
 
-    public void setCnpj(String Cnpj) {
-        this.Cnpj = Cnpj;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getPassword() {

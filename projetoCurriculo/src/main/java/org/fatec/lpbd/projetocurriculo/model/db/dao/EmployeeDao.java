@@ -23,5 +23,7 @@ public interface EmployeeDao {
     int remove(long id);
     
     int update(Employee employee);
+    
+    Employee findByLogin(String cpf);
 }
 
