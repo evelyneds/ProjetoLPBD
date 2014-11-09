@@ -22,11 +22,13 @@ import org.fatec.lpbd.projetocurriculo.model.db.dao.EmployeeDaoJPA;
  */
 public class MainApp {
     public static void main(String[] args) {
+    // ----- Teste de alguns métodos da Dao ------
+        
     Long idd = 1L;
     Employee emp = new Employee();
     Address ad = new Address();
     List<Phone> phones = new ArrayList<Phone>();
-    //emp.setId(idd);
+    
     
     
     emp.setName("CarlosSlll");
@@ -45,8 +47,10 @@ public class MainApp {
     phones.add(phone);
     Phone phone1 = new Phone();
     phone1.setNumber("222222222");    
-    phone1.setOwner(emp);
+    phone1.setOwner(emp);    
     phones.add(phone1);
+    
+    //---- Lembrar de fazer  um set do atributo para relacionar o empregado.
     emp.setPhones(phones);
     
 //        user.setPassword("12345");
