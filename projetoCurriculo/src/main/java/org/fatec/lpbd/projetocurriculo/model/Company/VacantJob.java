@@ -16,23 +16,23 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
-import org.fatec.lpbd.projetocurriculo.model.Employee.Perfil;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Profile;
 
 /**
  *
  * @author Alexandre
  */
 @Entity
-public class Vaga {
-@Id@GeneratedValue
+public class VacantJob {
+@Id @GeneratedValue
 private long id;
-private String vaga;
+private String vacant;
 private String code;
-private String descrição;
+private String description;
 
-@OneToOne(mappedBy="vaga",orphanRemoval=true,fetch=FetchType.LAZY, 
+@OneToOne(mappedBy="vacant",orphanRemoval=true,fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
-private Perfil  perfil;
+private Profile  profile;
 
     
 
@@ -42,7 +42,7 @@ private List<Employee> employees;
 @ManyToOne
 private Company owner;
 
-    public Vaga() {
+    public VacantJob() {
     }
 
     public long getId() {
@@ -61,28 +61,28 @@ private Company owner;
         this.code = code;
     }
 
-    public String getVaga() {
-        return vaga;
+    public String getVacant() {
+        return vacant;
     }
 
-    public void setVaga(String vaga) {
-        this.vaga = vaga;
+    public void setVacant(String vacant) {
+        this.vacant = vacant;
     }
 
-    public String getDescrição() {
-        return descrição;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Perfil getPerfil() {
-        return perfil;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public List<Employee> getEmployees() {

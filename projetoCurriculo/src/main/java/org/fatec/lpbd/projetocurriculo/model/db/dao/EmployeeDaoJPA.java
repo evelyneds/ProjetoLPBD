@@ -84,4 +84,24 @@ public class EmployeeDaoJPA implements EmployeeDao {
         return removed;
     }
     
+    public int update(Employee employee) {
+        int updated = -1;
+        EntityManager em = factory.createEntityManager();
+        try {
+            Employee employeeSearch = em.find(Employee.class, employee.getId());
+
+            em.getTransaction().begin();
+            em.merge(employee);
+            em.getTransaction().commit();
+            updated += 1; 
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }finally {
+            em.close();
+        }
+        return updated;
+    }
+    
 }

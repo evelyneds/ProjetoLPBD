@@ -5,15 +5,15 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!--entidades mapaeadas-->
     <class>org.fatec.lpbd.projetocurriculo.model.Company.Company</class>
-    <class>org.fatec.lpbd.projetocurriculo.model.Company.Vaga</class>
     <class>org.fatec.lpbd.projetocurriculo.model.Employee.AcademicHistory</class>
     <class>org.fatec.lpbd.projetocurriculo.model.Employee.Address</class>
     <class>org.fatec.lpbd.projetocurriculo.model.Employee.Email</class>
     <class>org.fatec.lpbd.projetocurriculo.model.Employee.Employee</class>
     <class>org.fatec.lpbd.projetocurriculo.model.Employee.Experience</class>
     <class>org.fatec.lpbd.projetocurriculo.model.Employee.Language</class>
-    <class>org.fatec.lpbd.projetocurriculo.model.Employee.Perfil</class>
     <class>org.fatec.lpbd.projetocurriculo.model.Employee.Phone</class>
+    <class>org.fatec.lpbd.projetocurriculo.model.Company.VacantJob</class>
+    <class>org.fatec.lpbd.projetocurriculo.model.Employee.Profile</class>
     <properties>
       <!--dados da conexao-->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

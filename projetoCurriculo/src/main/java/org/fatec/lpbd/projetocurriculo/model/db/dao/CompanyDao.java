@@ -8,7 +8,7 @@ package org.fatec.lpbd.projetocurriculo.model.db.dao;
 
 import java.util.List;
 import org.fatec.lpbd.projetocurriculo.model.Company.Company;
-import org.fatec.lpbd.projetocurriculo.model.Company.Vaga;
+import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 
 /**
  *
@@ -17,9 +17,11 @@ import org.fatec.lpbd.projetocurriculo.model.Company.Vaga;
 public interface CompanyDao {
     boolean persist(Company company);
     
+    //boolean insertVaga()
+    
     List<Company> list();
     
-    List<Vaga> listVagas(long id);
+    List<VacantJob> listVacant(long id);
     
     int remove(long id);
 

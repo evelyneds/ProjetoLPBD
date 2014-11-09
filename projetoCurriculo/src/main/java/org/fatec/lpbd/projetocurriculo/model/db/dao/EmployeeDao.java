@@ -21,5 +21,7 @@ public interface EmployeeDao {
     List<Employee> list();
     
     int remove(long id);
+    
+    int update(Employee employee);
 }
 

@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import org.fatec.lpbd.projetocurriculo.model.Company.Vaga;
+import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 
 /**
  *
@@ -20,17 +20,17 @@ import org.fatec.lpbd.projetocurriculo.model.Company.Vaga;
  */
 
 @Entity
-public class Perfil {
+public class Profile {
     
 @Id @GeneratedValue
 private long id;
-private String perfil;
+private String profile;
 @ManyToMany
 private List<Employee> employees;
 @OneToOne
-private Vaga vaga;
+private VacantJob vacant;
 
-    public Perfil() {
+    public Profile() {
     }
 
     public long getId() {
@@ -41,12 +41,12 @@ private Vaga vaga;
         this.id = id;
     }
 
-    public String getPerfil() {
-        return perfil;
+    public String getProfile() {
+        return profile;
     }
 
-    public void setPerfil(String perfil) {
-        this.perfil = perfil;
+    public void setPerfil(String profile) {
+        this.profile= profile;
     }
 
 

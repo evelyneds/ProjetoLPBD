@@ -30,7 +30,7 @@ public class Company implements Serializable{
     private String password;
     @OneToMany(mappedBy="owner",orphanRemoval=true,fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
-    private List<Vaga> vagas;
+    private List<VacantJob> vacant;
 
     public Company() {
     }
@@ -67,12 +67,12 @@ cascade={CascadeType.ALL})
         this.password = password;
     }
 
-    public List<Vaga> getVagas() {
-        return vagas;
+    public List<VacantJob> getVacant() {
+        return vacant;
     }
 
-    public void setVagas(List<Vaga> vagas) {
-        this.vagas = vagas;
+    public void setVacant(List<VacantJob> vacant) {
+        this.vacant = vacant;
     }
     
     

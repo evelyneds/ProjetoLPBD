@@ -17,7 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import org.fatec.lpbd.projetocurriculo.model.Company.Vaga;
+import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 
 /**
  *
@@ -61,11 +61,15 @@ cascade={CascadeType.ALL})
     
     @ManyToMany(mappedBy = "employees",fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
-    private List<Perfil> perfis;
+    private List<Profile> profiles;
     
     @ManyToMany(mappedBy="employees",fetch=FetchType.LAZY, 
 cascade={CascadeType.ALL})
-    private List<Vaga> vagas;
+    private List<VacantJob> vacants;
+    
+    public Employee() {
+    }
+
 
     public List<Phone> getPhones() {
         return phones;
@@ -115,25 +119,22 @@ cascade={CascadeType.ALL})
         this.languages = languages;
     }
 
-    public List<Perfil> getPerfis() {
-        return perfis;
+    public List<Profile> getProfile() {
+        return profiles;
     }
 
-    public void setPerfis(List<Perfil> perfis) {
-        this.perfis = perfis;
+    public void setProfile(List<Profile> profiles) {
+        this.profiles = profiles;
     }
 
-    public List<Vaga> getVagas() {
-        return vagas;
+    public List<VacantJob> getVacant() {
+        return vacants;
     }
 
-    public void setVagas(List<Vaga> vagas) {
-        this.vagas = vagas;
+    public void setVacant(List<VacantJob> vacants) {
+        this.vacants = vacants;
     }
-
-     public Employee() {
-    }
-
+    
     public int getAge() {
         return age;
     }

@@ -13,7 +13,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import org.fatec.lpbd.projetocurriculo.model.Company.Company;
-import org.fatec.lpbd.projetocurriculo.model.Company.Vaga;
+import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 
 /**
  *
@@ -66,7 +66,7 @@ public class CompanyDaoJPA {
         return list;
     }
     
-    public List<Vaga> listVagas(long id){
+    public List<VacantJob> listVagas(long id){
          return null;
         
     }
