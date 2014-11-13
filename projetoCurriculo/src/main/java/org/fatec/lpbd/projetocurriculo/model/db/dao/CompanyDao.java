@@ -17,7 +17,7 @@ import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 public interface CompanyDao {
     boolean persist(Company company);
     
-    //boolean insertVaga()
+    boolean insertVacant(VacantJob vacant);
     
     List<Company> list();
     
@@ -25,7 +25,11 @@ public interface CompanyDao {
     
     int remove(long id);
     
+    int deleteVacant(long id);
+    
     Company findByLogin(String cnpj);
+    
+    
 
     
 }
