@@ -7,10 +7,13 @@
 package org.fatec.lpbd.projetocurriculo.model.Employee;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 
@@ -27,11 +30,31 @@ private long id;
 private String profile;
 @ManyToMany
 private List<Employee> employees;
-@OneToOne
-private VacantJob vacant;
+
+@OneToMany(mappedBy="profile",orphanRemoval=true,fetch=FetchType.LAZY, 
+cascade={CascadeType.ALL})
+private List<VacantJob> vacants;
 
     public Profile() {
     }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public List<VacantJob> getVacants() {
+        return vacants;
+    }
+
+    public void setVacants(List<VacantJob> vacants) {
+        this.vacants = vacants;
+    }
+
+    
 
     public long getId() {
         return id;

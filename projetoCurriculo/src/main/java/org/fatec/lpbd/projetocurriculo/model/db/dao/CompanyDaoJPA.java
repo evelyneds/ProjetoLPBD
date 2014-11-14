@@ -19,7 +19,7 @@ import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
  *
  * @author Alexandre
  */
-public class CompanyDaoJPA {
+public class CompanyDaoJPA implements CompanyDao{
      private EntityManagerFactory factory;
     
     private String searchCompany = "SELECT o FROM company o";
@@ -149,6 +149,11 @@ public class CompanyDaoJPA {
             em.close();
         }    
         return company;
+    }
+
+    @Override
+    public List<VacantJob> listVacant(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

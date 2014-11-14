@@ -7,9 +7,9 @@
 package org.fatec.lpbd.projetocurriculo.model.db.dao;
 
 import java.util.List;
-import org.fatec.lpbd.projetocurriculo.model.Employee.Address;
+import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
-import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Profile;
 
 /**
  *
@@ -18,6 +18,8 @@ import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
 public interface EmployeeDao {
     boolean persist(Employee employee);
     
+    boolean insertProfile(Profile profile);
+    
     List<Employee> list();
     
     int remove(long id);
@@ -25,5 +27,7 @@ public interface EmployeeDao {
     int update(Employee employee);
     
     Employee findByLogin(String cpf);
+    
+    List<VacantJob> listVacant(long id);
 }
 

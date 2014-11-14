@@ -12,9 +12,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.fatec.lpbd.projetocurriculo.model.Employee.Address;
+import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
-import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Profile;
 
 /**
  *
@@ -27,6 +27,7 @@ public class EmployeeDaoJPA implements EmployeeDao {
     private String searchUser = "SELECT u FROM Employee u WHERE u.id = ?";
     private String searchLogin = "SELECT u FROM Employee u WHERE u.cpf = ?";
     private String searchItem = "SELECT u FROM Employee u where name like ? order by name";
+    private String searchVacant = "SELECT u FROM vacantjob u WHERE u.owner_id = ?";
 
     public EmployeeDaoJPA() {
         factory = Persistence.createEntityManagerFactory("projeto");
@@ -49,7 +50,23 @@ public class EmployeeDaoJPA implements EmployeeDao {
         }
         return true;
     }
-        
+    
+    public boolean insertProfile(Profile profile){
+        EntityManager em = factory.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(profile);
+            
+            em.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return true;
+    }
     
     public List<Employee> list() {
         List<Employee> list = new ArrayList<Employee>();
@@ -119,4 +136,21 @@ public class EmployeeDaoJPA implements EmployeeDao {
         return employee;
     }
     
+    public List<VacantJob> listVacant(long id) {
+        List<VacantJob> list = new ArrayList<VacantJob>();
+        EntityManager em = factory.createEntityManager();
+        if (em != null) {
+            try {
+                TypedQuery<VacantJob> query = em.createQuery(searchVacant, VacantJob.class);
+                query.setParameter(1, id);
+                list = query.getResultList();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                em.close();
+            }
+        }
+        return list;
+    }
+
 }

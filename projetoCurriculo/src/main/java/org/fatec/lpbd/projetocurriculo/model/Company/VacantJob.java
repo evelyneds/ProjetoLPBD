@@ -30,9 +30,8 @@ private String vacant;
 private String code;
 private String description;
 
-@OneToOne(mappedBy="vacant",orphanRemoval=true,fetch=FetchType.LAZY, 
-cascade={CascadeType.ALL})
-private Profile  profile;
+@ManyToOne
+private Profile profile;
 
     
 

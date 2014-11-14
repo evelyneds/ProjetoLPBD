@@ -7,11 +7,14 @@
 package org.fatec.lpbd.projetocurriculo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Address;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Profile;
+import org.fatec.lpbd.projetocurriculo.model.db.dao.CompanyDao;
+import org.fatec.lpbd.projetocurriculo.model.db.dao.CompanyDaoJPA;
 import org.fatec.lpbd.projetocurriculo.model.db.dao.EmployeeDao;
 import org.fatec.lpbd.projetocurriculo.model.db.dao.EmployeeDaoJPA;
 
@@ -28,6 +31,37 @@ public class MainApp {
     Employee emp = new Employee();
     Address ad = new Address();
     List<Phone> phones = new ArrayList<Phone>();
+//    List<VacantJob> vacants = new ArrayList<VacantJob>();
+//    VacantJob vac = new VacantJob();
+//    Profile pro = new Profile();
+//    vac.setCode("32006");
+//    vac.setVacant("Vaga de suporte técnico");
+//    vac.setDescription("Suporte técnico aos usuários, manutenção, instalação de hardware e software");
+//    pro.setPerfil("Técnico em informática");
+//    vacants.add(vac);
+//    pro.setVacants(vacants);
+//    
+//    vac.setProfile(pro);
+//    
+//    CompanyDao dao1 = new CompanyDaoJPA();
+//    boolean i1 = dao1.insertVacant(vac);
+    EmployeeDao empdao = new EmployeeDaoJPA();
+    
+    Profile pro = new Profile();
+    pro.setPerfil("Técnico em manutenção");
+    empdao.insertProfile(pro);
+    
+    Profile pro1 = new Profile();
+    pro1.setPerfil("Técnico em administração");    
+    empdao.insertProfile(pro1);
+    
+    Profile pro2 = new Profile();
+    pro.setPerfil("Técnico em logistica");
+    empdao.insertProfile(pro2);
+//    pro.setPerfil("Técnico em manutenção");
+//    empdao.insertProfile(pro);
+    
+    
     
     
     
@@ -65,6 +99,8 @@ public class MainApp {
         }
         //dao.remove(2L);
     }
+    
+    
     
 }
 
