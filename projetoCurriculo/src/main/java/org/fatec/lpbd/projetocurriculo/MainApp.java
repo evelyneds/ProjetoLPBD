@@ -6,8 +6,12 @@
 
 package org.fatec.lpbd.projetocurriculo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.fatec.lpbd.projetocurriculo.controller.CurriculoHelper;
 import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Address;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
@@ -65,7 +69,7 @@ public class MainApp {
     
     
     
-    emp.setName("CarlosSlll");
+    emp.setName("CarlosSlllAAA");
     emp.setLastName("Leonardoaaaa");
     emp.setCpf("1299999999aa");
     emp.setRg("1234588sss");
@@ -84,6 +88,9 @@ public class MainApp {
     phone1.setOwner(emp);    
     phones.add(phone1);
     
+
+    CurriculoHelper ch = new CurriculoHelper(emp);
+
     //---- Lembrar de fazer  um set do atributo para relacionar o empregado.
     emp.setPhones(phones);
     
@@ -100,7 +107,6 @@ public class MainApp {
         //dao.remove(2L);
     }
     
-    
-    
+
 }
 
