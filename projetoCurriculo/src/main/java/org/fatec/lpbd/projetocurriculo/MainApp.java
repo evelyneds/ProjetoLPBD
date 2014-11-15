@@ -69,13 +69,18 @@ public class MainApp {
     
     
     
-    emp.setName("CarlosSlllAAA");
-    emp.setLastName("Leonardoaaaa");
-    emp.setCpf("1299999999aa");
-    emp.setRg("1234588sss");
+    emp.setName("José");
+    emp.setLastName("Carlos da Silva");
+    emp.setCpf("000.000.000-00");
+    emp.setRg("00.000.000-X");
     emp.setPassword("12345sss");
+    emp.setAge(21);
     
-    ad.setStreet("Rua tressss");
+    ad.setStreet("Rua Quinta das Flores");
+    ad.setNumber("1458");
+    ad.setCity("Jacareí");
+    ad.setState("SP");
+    ad.setNeighborhood("Pq. das Orquideas");
     ad.setOwner(emp);
     emp.setAddress(ad);
     

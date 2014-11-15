@@ -5,6 +5,7 @@
  */
 package org.fatec.lpbd.projetocurriculo.controller;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -13,6 +14,7 @@ import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -54,6 +56,20 @@ public class CurriculoHelper {
             String fullName = String.format("%1s %2s", emp.getName(), emp.getLastName());
             
             doc.add(titleString(fullName));
+            doc.add(separatorText("INFORMAÇÕES PESSOAIS"));
+            doc.add(lineSeparator());
+            doc.add(simpleText("    - Idade: " + emp.getAge()));
+            doc.add(simpleText(streetStringFormat(emp)));
+            doc.add(simpleText(cityStringFormat(emp)));
+            doc.add(simpleText("    - "));
+            doc.add(spaceLine());
+            doc.add(separatorText("OBJETIVO"));
+            doc.add(lineSeparator());
+            doc.add(simpleText("    "));
+            doc.add(separatorText("FORMAÇÃO"));
+            doc.add(lineSeparator());
+            doc.add(separatorText("EXPERIÊNCIA PROFISSIONAL"));
+            doc.add(lineSeparator());
 
         } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(CurriculoHelper.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,13 +91,49 @@ public class CurriculoHelper {
         
     }
     
+    public static Paragraph simpleText(String text){
+        Font f = new Font(FontFamily.COURIER, 10, Font.NORMAL);
+        Paragraph p = new Paragraph(text, f);
+        p.setAlignment(Element.PARAGRAPH);
+        return p;
+    }
     
     public static Paragraph titleString(String text){
         Font f = new Font(FontFamily.COURIER, 20, Font.BOLD);
         Paragraph p = new Paragraph(text, f);
         p.setAlignment(Element.ALIGN_CENTER);
+        p.setSpacingAfter(20);
         return p;
     }
     
+    public static Paragraph separatorText(String text){
+        Font f = new Font(FontFamily.COURIER, 14, Font.BOLD);
+        Paragraph p = new Paragraph(text, f);
+        p.setSpacingAfter(-15);
+        return p;
+    }
     
+    public static Chunk lineSeparator(){
+        LineSeparator ls = new LineSeparator();
+        return (new Chunk(ls));
+    }
+    
+    public static Paragraph spaceLine(){
+//        Font f = new Font(FontFamily.COURIER, 14, Font.BOLD);
+        Paragraph p = new Paragraph("");
+//        p.setSpacingAfter(-15);
+        return p;
+    }
+    
+    public static String cityStringFormat(Employee emp){
+        String formStr = String.format("    - Cidade: %1s/%3s / Bairro: %2s ", emp.getAddress().getCity(), emp.getAddress().getNeighborhood(), emp.getAddress().getState());
+        return formStr;
+    }
+    
+    
+    public static String streetStringFormat(Employee emp){
+        String formStr = String.format("    - %1s nº %2s ", emp.getAddress().getStreet(), emp.getAddress().getNumber());
+        return formStr;
+    }
+            
 }
