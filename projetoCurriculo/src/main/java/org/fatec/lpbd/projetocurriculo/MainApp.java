@@ -6,19 +6,14 @@
 
 package org.fatec.lpbd.projetocurriculo;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.fatec.lpbd.projetocurriculo.controller.CurriculoHelper;
-import org.fatec.lpbd.projetocurriculo.model.Company.VacantJob;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Address;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Email;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Profile;
-import org.fatec.lpbd.projetocurriculo.model.db.dao.CompanyDao;
-import org.fatec.lpbd.projetocurriculo.model.db.dao.CompanyDaoJPA;
 import org.fatec.lpbd.projetocurriculo.model.db.dao.EmployeeDao;
 import org.fatec.lpbd.projetocurriculo.model.db.dao.EmployeeDaoJPA;
 
@@ -35,6 +30,8 @@ public class MainApp {
     Employee emp = new Employee();
     Address ad = new Address();
     List<Phone> phones = new ArrayList<Phone>();
+    List<Email> emails = new ArrayList<Email>();
+    
 //    List<VacantJob> vacants = new ArrayList<VacantJob>();
 //    VacantJob vac = new VacantJob();
 //    Profile pro = new Profile();
@@ -49,6 +46,7 @@ public class MainApp {
 //    
 //    CompanyDao dao1 = new CompanyDaoJPA();
 //    boolean i1 = dao1.insertVacant(vac);
+    
     EmployeeDao empdao = new EmployeeDaoJPA();
     
     Profile pro = new Profile();
@@ -85,20 +83,28 @@ public class MainApp {
     emp.setAddress(ad);
     
     Phone phone = new Phone();
-    phone.setNumber("3333333");    
+    phone.setNumber("3933-0012");
+    phone.setType("Residencial");
     phone.setOwner(emp);
     phones.add(phone);
     Phone phone1 = new Phone();
-    phone1.setNumber("222222222");    
+    phone1.setNumber("98866-1234");
+    phone1.setType("Celular");
     phone1.setOwner(emp);    
     phones.add(phone1);
     
-
+    emp.setPhones(phones);
+    
+    Email em = new Email();
+    em.setEmail("email1@email.com");
+    em.setOwner(emp);
+    emails.add(em);
+    emp.setEmails(emails);
+    
     CurriculoHelper ch = new CurriculoHelper(emp);
 
     //---- Lembrar de fazer  um set do atributo para relacionar o empregado.
-    emp.setPhones(phones);
-    
+
 //        user.setPassword("12345");
         EmployeeDao dao = new EmployeeDaoJPA();
         boolean i = dao.persist(emp);

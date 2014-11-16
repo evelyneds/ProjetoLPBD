@@ -19,9 +19,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Email;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
 
 /**
  *
@@ -61,7 +64,8 @@ public class CurriculoHelper {
             doc.add(simpleText("    - Idade: " + emp.getAge()));
             doc.add(simpleText(streetStringFormat(emp)));
             doc.add(simpleText(cityStringFormat(emp)));
-            doc.add(simpleText("    - "));
+            doc.add(simpleText(phonesStringFormat(emp)));
+            doc.add(simpleText(emailStringFormat(emp)));
             doc.add(spaceLine());
             doc.add(separatorText("OBJETIVO"));
             doc.add(lineSeparator());
@@ -118,12 +122,14 @@ public class CurriculoHelper {
         return (new Chunk(ls));
     }
     
+    
     public static Paragraph spaceLine(){
 //        Font f = new Font(FontFamily.COURIER, 14, Font.BOLD);
         Paragraph p = new Paragraph("");
 //        p.setSpacingAfter(-15);
         return p;
     }
+    
     
     public static String cityStringFormat(Employee emp){
         String formStr = String.format("    - Cidade: %1s/%3s / Bairro: %2s ", emp.getAddress().getCity(), emp.getAddress().getNeighborhood(), emp.getAddress().getState());
@@ -135,5 +141,24 @@ public class CurriculoHelper {
         String formStr = String.format("    - %1s nº %2s ", emp.getAddress().getStreet(), emp.getAddress().getNumber());
         return formStr;
     }
-            
+    
+    
+    public static String phonesStringFormat(Employee emp){
+        String formStr = "    - Telefone: ";
+        List<Phone> all = emp.getPhones();
+        for (Phone ph : all){
+            formStr = formStr + ph.getType() + ": " + ph.getNumber() + " ";
+        }
+        return formStr;
+    }
+    
+    
+    public static String emailStringFormat(Employee emp){
+        String formStr = "    - Email: ";
+        List<Email> all = emp.getEmails();
+        for (Email em : all){
+            formStr = formStr + em.getEmail() + " / ";
+        }
+        return formStr;
+    }
 }
