@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Email;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Employee;
 import org.fatec.lpbd.projetocurriculo.model.Employee.Phone;
+import org.fatec.lpbd.projetocurriculo.model.Employee.Profile;
 
 /**
  *
@@ -67,9 +68,12 @@ public class CurriculoHelper {
             doc.add(simpleText(phonesStringFormat(emp)));
             doc.add(simpleText(emailStringFormat(emp)));
             doc.add(spaceLine());
+            doc.add(spaceLine());
             doc.add(separatorText("OBJETIVO"));
             doc.add(lineSeparator());
-            doc.add(simpleText("    "));
+            doc.add(simpleText(objectivesStringFormat(emp)));
+            doc.add(spaceLine());
+            doc.add(spaceLine());
             doc.add(separatorText("FORMAÇÃO"));
             doc.add(lineSeparator());
             doc.add(separatorText("EXPERIÊNCIA PROFISSIONAL"));
@@ -158,6 +162,16 @@ public class CurriculoHelper {
         List<Email> all = emp.getEmails();
         for (Email em : all){
             formStr = formStr + em.getEmail() + " / ";
+        }
+        return formStr;
+    }
+    
+    
+    public static String objectivesStringFormat(Employee emp){
+        String formStr = "    ";
+        List<Profile> all = emp.getProfile();
+        for (Profile pf : all){
+            formStr = formStr + pf.getProfile() + " / ";
         }
         return formStr;
     }

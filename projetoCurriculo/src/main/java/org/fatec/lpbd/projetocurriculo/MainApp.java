@@ -31,7 +31,8 @@ public class MainApp {
     Address ad = new Address();
     List<Phone> phones = new ArrayList<Phone>();
     List<Email> emails = new ArrayList<Email>();
-    
+    List<Profile> profs = new ArrayList<Profile>();
+   
 //    List<VacantJob> vacants = new ArrayList<VacantJob>();
 //    VacantJob vac = new VacantJob();
 //    Profile pro = new Profile();
@@ -58,14 +59,13 @@ public class MainApp {
     empdao.insertProfile(pro1);
     
     Profile pro2 = new Profile();
-    pro.setPerfil("Técnico em logistica");
-    empdao.insertProfile(pro2);
-//    pro.setPerfil("Técnico em manutenção");
-//    empdao.insertProfile(pro);
+    pro2.setPerfil("Técnico em logistica");
+    empdao.insertProfile(pro2);    
     
-    
-    
-    
+    profs.add(pro);
+    profs.add(pro1);
+    profs.add(pro2);
+    emp.setProfile(profs);
     
     emp.setName("José");
     emp.setLastName("Carlos da Silva");
